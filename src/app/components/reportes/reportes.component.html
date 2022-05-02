@@ -1,0 +1,50 @@
+<!--Inserción del menu /toolbar-->
+<app-menu></app-menu>
+<!--inicio del contenido con estilos de css para diseño de fondo de pantalla-->
+<ion-content style="position: relative;">
+    <div class="custom-shape-divider-bottom-1649124123">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+    </svg>
+    </div>
+    <!--inicio de la card-->
+    <ion-card>
+        <ion-card-header>
+            <!--Titulo principal-->
+            <ion-card-title>Generar Reporte</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <!--Sub titulo -->
+            <h4 class="text-center">Seleccione un rango de fechas</h4>
+            <br/>
+            <!--Inicio del Form Group-->
+            <form [formGroup]="reporte_form" (ngSubmit)="generarReporte()">
+                <div class="input-group mb-3">
+                    <!--Ingreso d ela primera fecha en la cual se debera de descargar el reporte-->
+                    <span class="input-group-text" id="basic-addon1">De</span>
+                    <input type="date" class="form-control" formControlName="fecha_1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!--En caso de no cumplir saldra este aviso -->
+                <small *ngIf="fecha_1NoValido" class="text-danger">Por favor ingrese una fecha</small>
+                <div class="input-group mb-3">
+                    <!--Ingreso de fecha hasta donde se necesitara el reporte-->
+                    <span class="input-group-text" id="basic-addon1">A</span>
+                    <input type="date" class="form-control" formControlName="fecha_2" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <!--En caso de no cumplir saldra este aviso-->
+                <small *ngIf="fecha_2NoValido" class="text-danger">Por favor ingrese una fecha</small>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <!--Boton para generar el reporte-->
+                    <div class="col-6">
+                        <ion-button expand="block" shape="round" type="submit" color="primary">Generar</ion-button>
+                    </div>
+
+                    <div class="col-3"></div>
+                </div>
+                <!--Fon del form group-->
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

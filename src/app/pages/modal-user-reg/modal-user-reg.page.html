@@ -1,0 +1,81 @@
+<!--MODAL CUANDO SE RECONOZCA LA PERSONA-->
+<ion-header>
+    <ion-toolbar>
+        <!--Boton para cerrar el modal-->
+        <ion-button slot="end" (click)="cerrarD()" color="primary">
+            <ion-icon color="light" name="close"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+<!--Inicio del contenido-->
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <!--Titulo del usuaio mostrado su nombre-->
+            <ion-card-title class="text-center">
+                Perfil del usuario {{usuario.name}}
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+
+            <!--Imagen por defecto-->
+            <div class="img1">
+                <ion-img *ngIf="!usuario.url_imagen" alt="imagen del usuario" src="../../../assets/icon/lado2.jpg" id="img1">
+
+                </ion-img>
+                <ion-img *ngIf="usuario.url_imagen" alt="imagen del usuario" [src]="imagen(imagenes[0])" id="img1">
+
+                </ion-img>
+            </div> 
+            <div class="row">
+                <!--Informacion del usuario-->
+                <div class="col-6" id="info">
+                    <strong>Nombres:</strong>{{usuario.name}}
+                </div>
+                <div class="col-6" id="info"><strong></strong>
+                    <strong>Apellidos: </strong>{{usuario.apellidos}}
+                </div>
+                <div class="col-6" id="info"><strong>Telefono: </strong>{{usuario.telefono}} </div>
+                <div class="col-6" id="info"><strong>Correo: </strong>{{usuario.email}} </div>
+                <div class="col-6" id="info"><strong>Documento: </strong>{{usuario.numero_identificacion}} </div>
+                <div class="col-6" id="info"><strong>Estado:</strong> {{usuario.estado}} </div>
+                <div class="col-6" id="info"><strong>Tipo de rol: </strong>{{usuario.rol}} </div>
+                <div class="col-6" id="info"></div>
+                <!--Imagens por defecto de los tres lados de la cara-->
+                <ion-row *ngIf="usuario.url_imagen">
+                    <ion-col size="4" *ngFor="let image of imagenes">
+                        <ion-img [alt]="image" [src]="imagen(image)"></ion-img>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="!usuario.url_imagen">
+                    <ion-col size="4"></ion-col>
+                    <ion-col size="4">
+                        El usuario aún no tiene reconocimiento facial
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <!--boton para desactiva-->
+                    <ion-col size="4" class="text-center">
+                        <ion-button (click)="desactivar()" shape="round" fill="clear">
+                            Desactivar
+                        </ion-button>
+
+                    </ion-col>
+                    <!--Boton para activa-->
+                    <ion-col size="4" sizeSm="4" class="text-center">
+                        <ion-button (click)="activar()" fill="clear" shape="round">
+                            Activar
+                        </ion-button>
+                    </ion-col>
+                    <!--Boton para editar-->
+                    <ion-col size="4" class="text-center">
+                        <ion-button fill="clear" shape="round" [routerLink]="['/user/update-user/'+usuario.id]" [replaceUrl]="true" (click)="cerrar()">
+                            Editar
+                        </ion-button>
+                    </ion-col>
+
+                </ion-row>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

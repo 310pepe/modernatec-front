@@ -1,0 +1,55 @@
+<!--contenido del modal -->
+<ion-content>
+    <!--inicio de la card-->
+    <ion-card id="card" *ngIf="load">
+
+        <!--inicio del contenido principal del modal-->
+        <ion-card-content>
+            <div class="row">
+
+                <!--incercion de la imagen del usuario por defecto-->
+                <div class="col-6" id="imagen">
+                    <img alt="imagen del usuario" [src]="imagen(imagenes[0])" class="img">
+                    <h3>Coincidencia del :  {{persona.confidence*100+"%"}}</h3>
+
+                    <ion-list>
+                        <ion-radio-group value="biff">
+
+                            <!--seleccion de entrada y salida-->
+                            <ion-item lines="none" *ngIf="!ultimoRegistro.Ultimo_registro || ultimoRegistro.Ultimo_registro.hora_salida">
+                                <ion-label>Entrada</ion-label>
+                                <ion-radio slot="start" value="biff" se></ion-radio>
+                            </ion-item>
+
+                            <ion-item lines="none" *ngIf="ultimoRegistro.Ultimo_registro && !ultimoRegistro.Ultimo_registro.hora_salida">
+                                <ion-label>Salida</ion-label>
+                                <ion-radio slot="start" value="biff"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+
+
+                </div>
+                <!--información del usuario-->
+                <div class="col-6" id="info">
+                    <ion-item>Nombre: {{user.name}} </ion-item>
+                    <ion-item>Documento: {{user.numero_identificacion}} </ion-item>
+                    <ion-item>Telefono: {{user.telefono}} </ion-item>
+                    <ion-item>Rol: {{user.rol}} </ion-item>
+                    <ion-item>Fecha: {{fecha.toLocaleDateString()}} </ion-item>
+
+                </div>
+
+            </div>
+            <!--Boton para confirmar-->
+
+
+        </ion-card-content>
+        <ion-button color="primary" expand="block" id="button" (click)="registrar()">
+            Confirmar
+        </ion-button>
+        <ion-button color="primary" expand="block" id="button" (click)="close()">
+            Cancelar
+        </ion-button>
+    </ion-card>
+</ion-content>

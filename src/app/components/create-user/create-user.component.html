@@ -1,0 +1,188 @@
+<!--menu principal /toolbar-->
+<app-menu></app-menu>
+<!--Inicio del contenido con estilos de css-->
+<ion-content style="position: relative;">
+    <div class="custom-shape-divider-bottom-1649306534">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="shape-fill"></path>
+    </svg>
+    </div>
+    <ion-card>
+        <ion-card-header>
+            <!--titulo princiap-->
+            <ion-card-title class="text-center">
+                Crear Nuevo Usuario
+            </ion-card-title>
+            <ion-card-content>
+                <!--Inicio del form group-->
+                <form [formGroup]="userForm" (submit)="crear()">
+                    <ion-row>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="has-validation">
+                                <ion-item>
+                                    <ion-label position="floating">Nombres</ion-label>
+                                    <ion-input type="text" formControlName="name" [class.is-invalid]="nameNoValido" pattern="[a-zA-Z\u00C0-\u00FF ]+" [class.is-valid]="!nameNoValido && this.userForm.get('name').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="nameNoValido" id="small" class="text-danger">
+                Por favor ingrese los nombres del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class=" ">
+                                <ion-item>
+                                    <ion-label position="floating">Apellidos</ion-label>
+                                    <ion-input type="text" formControlName="apellidos" [class.is-invalid]="apellidosNoValido" pattern="[a-zA-Z\u00C0-\u00FF ]+" [class.is-valid]="!apellidosNoValido && this.userForm.get('apellidos').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="apellidosNoValido" id="small" class="text-danger">
+                Por favor ingrese los apellidos del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="">
+                                <ion-item>
+                                    <ion-label position="floating">Numero de Identificación</ion-label>
+                                    <ion-input type="text" formControlName="numero_identificacion" [class.is-invalid]="numero_identificacionNoValido" [class.is-valid]="!numero_identificacionNoValido && this.userForm.get('numero_identificacion').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="numero_identificacionNoValido" id="small" class="text-danger">
+                Por favor ingrese el número de identificación del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class=" ">
+                                <ion-item>
+                                    <ion-label position="floating">Telefono</ion-label>
+                                    <ion-input type="text" formControlName="telefono" [class.is-invalid]="telefonoNoValido" [class.is-valid]="!telefonoNoValido && this.userForm.get('telefono').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="telefonoNoValido" id="small" class="text-danger">
+                Por favor ingrese el telefono del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="">
+                                <ion-item>
+                                    <ion-label position="floating">Correo </ion-label>
+                                    <ion-input type="text" formControlName="email" [class.is-invalid]="emailNoValido" [class.is-valid]="!emailNoValido && this.userForm.get('email').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="emailNoValido" id="small" class="text-danger">
+                Por favor ingrese el email del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class=" ">
+                                <ion-item>
+                                    <ion-label>Tipo de rol:</ion-label>
+                                    <ion-select formControlName="rol" [class.is-invalid]="rolNoValido" [class.is-valid]="!rolNoValido && this.userForm.get('rol').touched" aria-label="Default select example">
+                                        <ion-select-option value="1">Registros</ion-select-option>
+                                        <ion-select-option value="2">Administrador</ion-select-option>
+                                        <ion-select-option value="3">Seguridad</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="rolNoValido" id="small" class="text-danger">
+                Por favor ingrese el rol del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="">
+                                <ion-item>
+                                    <ion-label>Tipo de contrato:</ion-label>
+                                    <ion-select formControlName="id_contrato" [class.is-invalid]="id_contratoNoValido" [class.is-valid]="!id_contratoNoValido && this.userForm.get('id_contrato').touched" aria-label="Default select example">
+                                        <ion-select-option value="1">Definido</ion-select-option>
+                                        <ion-select-option value="2">Indefinido</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="id_contratoNoValido" id="small" class="text-danger">
+                Por favor ingrese el tipo de contrato del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class=" ">
+                                <ion-item>
+                                    <ion-label>Fecha de inico:</ion-label>
+
+                                    <input type="date" formControlName="fecha_inicio" [class.is-invalid]="fecha_inicioNoValido" [class.is-valid]="!fecha_inicioNoValido && this.userForm.get('fecha_inicio').touched" aria-label="Username" aria-describedby="basic-addon1">
+
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="fecha_inicioNoValido" id="small" class="text-danger">
+                Por favor ingrese la fecha de inicio del contrato
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 mb-3 *ngIf="userForm.value.id_contrato==1" id="col">
+                            <div class="">
+                                <ion-item>
+                                    <ion-label>Fecha de fin:</ion-label>
+                                    <input type="date" formControlName="fecha_fin" [class.is-invalid]="fecha_finNoValido" [class.is-valid]="!fecha_finNoValido && this.userForm.get('fecha_fin').touched" aria-label="Username" aria-describedby="basic-addon1">
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="fecha_finNoValido" id="small" class="text-danger">
+                Por favor ingrese la fecha de finalización del contrato
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <div class="col-12">
+                            <div class="row">
+
+                                <!--Bonton para devolverse-->
+                                <div class="col-6 text-center">
+                                    <ion-button [routerLink]="['/user/admin-regis']" shape="round">
+                                        Atras
+                                    </ion-button>
+                                </div>
+                                <!--Boton para continuar con el proceso de crear usuario-->
+                                <div class="col-6 text-center">
+                                    <ion-button type="submit" color="success" fill="outline" shape="round">
+                                        Siguiente
+                                    </ion-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </ion-row>
+                </form>
+
+            </ion-card-content>
+        </ion-card-header>
+    </ion-card>
+</ion-content>

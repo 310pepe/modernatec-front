@@ -1,0 +1,49 @@
+<ion-content *ngIf="load">
+  <!--Inicio del form-->
+  <form>
+    <div class="row">
+      <div class="col-3"></div>
+      <!--incercion de la imagen del usuario por defecto-->
+      <div class="col-6" id="imagen">
+        <img alt="imagen del usuario" [src]="urlImg" class="img">
+      </div>
+      <!--información del usuario-->
+
+      <div class="col-6" id="info">
+        NOMBRES: {{user.name}}
+      </div>
+      <div class="col-6" id="info">
+        APELLIDOS: {{user.apellidos}}
+      </div>
+      <div class="col-6" id="info">NUMERO DE IDENTIFICACIÓN: {{user.numero_identificacion}} </div>
+      <div class="col-6" id="info">CORREO: {{user.email}} </div>
+      <div class="col-6" id="info">AREA A DIRIGIRSE: {{cita.area}} </div>
+      <div class="col-6" id="info">CORREO DEL SOLICITANTE: {{cita.correo_solicitante}} </div>
+      <div class="col-6" id="info">TELEFONO: {{user.telefono}} </div>
+      <div class="col-12">
+        <ion-radio-group value="biff">
+
+          <!--seleccion de entrada y salida-->
+          <ion-item lines="none" *ngIf="!ultimoRegistro.Ultimo_registro || ultimoRegistro.Ultimo_registro.hora_salida">
+            <ion-label>Entrada</ion-label>
+            <ion-radio slot="start" value="biff" se></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" *ngIf="ultimoRegistro.Ultimo_registro && !ultimoRegistro.Ultimo_registro.hora_salida">
+            <ion-label>Salida</ion-label>
+            <ion-radio slot="start" value="biff"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+      <div class="col-12 text-center">
+        <!--Boton para recgresar-->
+        <ion-button fill="outline" (click)="registrar()">
+          confirmar
+        </ion-button>
+        <ion-button fill="outline" (click)="close()">
+          cancelar
+        </ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>

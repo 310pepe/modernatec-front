@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Poppins:wght@700&display=swap');
+ion-toolbar {
+    --background: white;
+    ion-item {
+        --background: white;
+    }
+    h1 {
+        margin-left: 15px;
+        position: relative;
+        font-size: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-family: 'PT Sans Narrow', sans-serif;
+        color: #5d4e8e;
+    }
+}

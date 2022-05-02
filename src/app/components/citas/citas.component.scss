@@ -1,0 +1,35 @@
+.custom-shape-divider-bottom-1649305623 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1649305623 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 181px;
+}
+
+.custom-shape-divider-bottom-1649305623 .shape-fill {
+    fill: #4F69C6;
+}
+
+ion-datetime {
+    margin-left: 5%;
+}
+
+ion-card {
+    box-shadow: 2px 2px 2px 2px rgb(93, 78, 142);
+    p {
+        font-size: 20px;
+    }
+}
+
+ion-button {
+    --border-radius: 15px;
+}

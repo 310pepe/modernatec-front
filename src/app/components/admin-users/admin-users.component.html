@@ -1,0 +1,93 @@
+<!--Incesrcion del menu /toolbar-->
+
+<app-menu></app-menu>
+<!--Inicio del contenidos del componente-->
+<ion-content>
+    <div class="row mt-3">
+        <div class="col-1"></div>
+        <div class="col-10 mb-2">
+            <!--Buscador de los estilos de boostrap-->
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar por número de identificación" #nameP>
+                <button class="btn btn-outline-info" (click)="buscar(nameP.value)" type="button">Search</button>
+            </form>
+
+        </div>
+        <!--Encaso de que en el buscador se busque a la paersona con su documento se mostrara esto-->
+        <div class="col-12 col-lg-4 col-md-12 col-sm-12" *ngIf="busqueda && usuariosB.length>0">
+            <ion-card class="native">
+                <ion-card-content>
+                    <div class="row">
+                        <div class="col-12">
+                            <!--Imagen por defecto-->
+                            <img alt="imagen del usuario" [src]="imagen(usuariosB[0])">
+                        </div>
+                        <!--Información del usuario -->
+                        <div class="col-12">
+                            <span>Nombre: {{usuariosB[0].name}}</span>
+                        </div>
+
+                        <div class="col-12">
+                            <span>
+                Rol: {{usuariosB[0].rol}}
+              </span>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                Documento: {{usuariosB[0].numero_identificacion}}
+              </span>
+                        </div>
+                    </div>
+                    <!--Bonton para abrir la información del usuario a mas detalla-->
+                    <ion-button expand="block" (click)="abrirModal(usuariosB[0])">
+                        Ver más
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <!--En caso de que el documento no este en la base de datos se mostrara lo siguiente-->
+        <div class="col-4" *ngIf="busqueda && !(usuariosB.length>0)">
+            <p>
+                No se encontró ningun usuario con el número indicado
+            </p>
+        </div>
+        <!--Boton para devolver a ver todos los usuarios -->
+        <div class="col-3" *ngIf="busqueda">
+            <ion-button (click)="busqueda=false; usuariosB=[]">
+                Ver todos los usuarios
+            </ion-button>
+        </div>
+        <!--Vista principal ,aqui se muestran todos los usuarios registrados-->
+        <ng-container *ngFor="let usuario of usuarios">
+            <div class="col-12 col-lg-4 col-md-12 col-sm-12" *ngIf="!busqueda">
+                <ion-card>
+                    <ion-card-content>
+                        <div class="row">
+                            <div class="col-12">
+                                <!--Imagen por defecto-->
+                                <img [src]="imagen(usuario)" alt="imagen del usuario">
+                            </div>
+                            <div class="col-12">
+                                <span>Nombre: {{usuario.name}}</span>
+                            </div>
+                            <div class="col-12">
+                                <span>
+                  Rol: {{usuario.rol}}
+                </span>
+                            </div>
+                            <div class="col-12">
+                                <span>
+                  Documento: {{usuario.numero_identificacion}}
+                </span>
+                            </div>
+                        </div>
+                        <!--Bonton para ver mas a detalle la informacion del usuario-->
+                        <ion-button expand="block" (click)="abrirModal(usuario)">
+                            Ver más
+                        </ion-button>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </ng-container>
+    </div>
+</ion-content>

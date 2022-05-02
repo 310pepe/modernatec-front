@@ -1,0 +1,43 @@
+<!--Incersion del menu / toolbar-->
+<app-menu></app-menu>
+<!--Contenido principal del componente-->
+<ion-content>
+    <div class="row">
+        <div class="col-12 text-center" id="title">
+            <!--Mensaje bonito e instructivo para el usuario-->
+            <h2>
+                ¡HOLA! INGRESA LAS FOTOS :D
+            </h2>
+        </div>
+        <ion-col size="12">
+            <!--Incio del form-->
+            <form>
+                <ion-row>
+                    <!--Ingreso de la primera imagen para el reconocimiento facial-->
+                    <ion-col size="12" size-lg="4" size-md="12" size-sm mb-3>
+                        <input type="file" accept="image/*" (change)="agregarImagen($event.target,0)">
+                        <img [src]="preview[0]">
+                    </ion-col>
+                    <!--Ingreso de la segunda imagen para el reconocimiento facial-->
+
+                    <ion-col size="12" size-lg="4" size-md="12" size-sm mb-3>
+                        <input type="file" accept="image/*" (change)="agregarImagen($event.target,1)">
+                        <img [src]="preview[1]">
+                    </ion-col>
+                    <!--Ingreso de la tercera imagen para el reconocimiento facial-->
+
+                    <ion-col size="12" size-lg="4" size-md="12" size-sm mb-3>
+                        <input type="file" accept="image/*" (change)="agregarImagen($event.target,2)">
+                        <img [src]="preview[2]">
+                    </ion-col>
+                    <!--Boton para agregar las fotos para el reconociemiento facial-->
+                    <div class="col-12 text-center">
+                        <ion-button [disabled]="!(img.length>=3)" (click)="addLearning()" color="primary" shape="round">
+                            Agregar
+                        </ion-button>
+                    </div>
+                </ion-row>
+            </form>
+        </ion-col>
+    </div>
+</ion-content>

@@ -1,0 +1,69 @@
+.custom-shape-divider-top-1649211862 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1649211862 svg {
+    position: relative;
+    display: block;
+    width: calc(115% + 1.3px);
+    height: 257px;
+}
+
+.custom-shape-divider-top-1649211862 .shape-fill {
+    fill: #4F69C6;
+}
+
+///
+#videoRef {
+    width: 60%;
+    height: 60%;
+    margin-left: 20%;
+    border-radius: 20px;
+}
+
+ion-card {
+    box-shadow: 2px 2px 2px 2px rgb(93, 78, 142);
+    @media (max-width: 783px) {
+        margin-top: 30%;
+    }
+}
+
+.ion-card-title{
+    color: white;
+    @media (max-width: 783px) {
+        font-size: 12.5px;
+    }
+}
+
+h2 {
+    color: #000;
+}
+
+#card {
+    box-shadow: none;
+}
+
+#imagen {
+    margin-top: 8%;
+    .img {
+        border-radius: 15px;
+    }
+    h3 {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+}
+
+#button {
+    --border-radius: 15px;
+    margin-top: 15px;
+}
+
+#info {
+    margin-top: 5%;
+}

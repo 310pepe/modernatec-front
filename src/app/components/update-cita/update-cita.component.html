@@ -1,0 +1,206 @@
+<!--Incercion del menu/toolbar-->
+<app-menu></app-menu>
+<!--Inicio del contenido con estilos de css-->
+<ion-content style="position: relative;">
+  <div class="custom-shape-divider-bottom-1649307577">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+    </svg>
+  </div>
+  <!--Inicio de la card-->
+  <ion-card *ngIf="load">
+    <ion-card-header>
+      <!--Titulo principal-->
+      <ion-card-title class="text-center">
+        Ingrese los datos requeridos
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!--Inicio del form group-->
+      <form [formGroup]="citaForm" (submit)="actualizar()">
+        <ion-row>
+          <ion-col size="12" size-lg="10" size-md="12" size-sm mb-3 id="col">
+            <img [src]="urlImg" alt="Foto del visitante">
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class=" mb-3">
+              <ion-item>
+                <ion-label position="stacked">Número de identificación:</ion-label>
+                <ion-input type="text" formControlName="numero_identificacion" aria-label="Username"
+                  aria-describedby="basic-addon1"></ion-input>
+              </ion-item>
+
+            </div>
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class=" mb-3">
+              <ion-item>
+                <ion-label position="stacked">Telefono</ion-label>
+                <ion-input type="text" formControlName="telefono" aria-label="Username" aria-describedby="basic-addon1">
+                </ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class=" mb-3">
+              <ion-item>
+                <ion-label position="stacked">Nombres:</ion-label>
+                <ion-input type="text" formControlName="name" aria-label="Username" aria-describedby="basic-addon1">
+                </ion-input>
+              </ion-item>
+
+            </div>
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class=" mb-3">
+              <ion-item>
+                <ion-label position="stacked">Apellidos</ion-label>
+                <ion-input type="text" formControlName="apellidos" aria-label="Username"
+                  aria-describedby="basic-addon1"></ion-input>
+              </ion-item>
+
+            </div>
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class=" mb-3">
+              <ion-item>
+                <ion-label position="stacked">Correol</ion-label>
+                <ion-input type="text" formControlName="correo_invitado" aria-label="Username"
+                  aria-describedby="basic-addon1"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class="">
+              <ion-item>
+                <ion-label position="stacked">Area</ion-label>
+                <ion-input type="text" [class.is-invalid]="areaNoValido"
+                  [class.is-valid]="!areaNoValido && this.citaForm.get('area').touched" formControlName="area"
+                  aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+              </ion-item>
+            </div>
+            <!--comienzo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+            <small *ngIf="areaNoValido" id="small" class="text-danger">
+              Por favor ingrese una area correcta
+            </small>
+            <!--fin del ngIf-->
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class="">
+              <ion-item>
+                <ion-label position="stacked">Correo del solicitante:</ion-label>
+                <ion-input type="email" [class.is-invalid]="correo_solicitanteNoValido"
+                  [class.is-valid]="!correo_solicitanteNoValido && this.citaForm.get('correo_solicitante').touched"
+                  formControlName="correo_solicitante" aria-label="Username" aria-describedby="basic-addon1">
+                </ion-input>
+              </ion-item>
+
+            </div>
+            <!--comienzo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+            <small *ngIf="correo_solicitanteNoValido" id="small" class="text-danger">
+              Por favor ingrese un email correcto
+            </small>
+            <!--fin del ngIf-->
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class="">
+              <ion-item>
+                <ion-label position="stacked">Fecha de la cita</ion-label>
+                <ion-input type="date" [class.is-invalid]="fechaNoValido"
+                  [class.is-valid]="!fechaNoValido && this.citaForm.get('fecha').touched" formControlName="fecha"
+                  aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+              </ion-item>
+            </div>
+            <!--comienzo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+            <small *ngIf="fechaNoValido" id="small" class="text-danger">
+              Por favor ingrese una fecha válida
+            </small>
+            <!--fin del ngIf-->
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class="">
+              <ion-item>
+                <ion-label position="stacked">Hora de la cita</ion-label>
+                <ion-input type="time" [class.is-invalid]="horaNoValido"
+                  [class.is-valid]="!horaNoValido && this.citaForm.get('hora').touched" formControlName="hora"
+                  aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+              </ion-item>
+
+            </div>
+            <!--comienzo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+            <small *ngIf="horaNoValido" id="small" class="text-danger">
+              Por favor ingrese una hora válida
+            </small>
+            <!--fin del ngIf-->
+          </ion-col>
+          <!--Informacion del usuario solicitado-->
+          <ion-col size="12" size-lg="6" size-md="6" size-sm mb-3 id="col">
+            <div class=" mb-3">
+              <ion-item>
+                <ion-label position="stacked">Codigo</ion-label>
+                <ion-input type="text" formControlName="codigo_cita" aria-label="Username"
+                  aria-describedby="basic-addon1"></ion-input>
+
+              </ion-item>
+
+            </div>
+          </ion-col>
+          <!--Ingreso de informacion-->
+          <ion-col *ngIf="changeImg" size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+            <div class="">
+              <ion-item>
+                <ion-label>Foto del visitante</ion-label>
+
+                <input formControlName="img" (change)="agregarImagen($event.target,0)" type="file" accept="image/*" />
+              </ion-item>
+            </div>
+            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+            <small *ngIf="imgNoValido" id="small" class="text-danger">
+              Por favor ingrese la foto del visitante
+            </small>
+            <!--fin del ngIf-->
+          </ion-col>
+          <ion-col *ngIf="changeImg" size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+            <img [src]="preview[0]">
+          </ion-col>
+          <!--Boton para regresar-->
+          <ion-col size="3" class=" text-center">
+            <ion-button [routerLink]="['/user/citas']">
+              Regresar
+            </ion-button>
+          </ion-col>
+          <!--Boton para cambiar la foto-->
+          <ion-col size="3" class=" text-center">
+            <ion-button *ngIf="!changeImg" (click)="cambiarImagen(true)" >
+              Cambiar foto
+            </ion-button>
+            <ion-button *ngIf="changeImg" (click)="cambiarImagen(false)" >
+              Cancelar cambio de foto
+            </ion-button>
+          </ion-col>
+          <!--Boton para borrar cita-->
+          <ion-col size="3" class=" text-center">
+            <ion-button (click)="delete()">
+              Borrar cita
+            </ion-button>
+          </ion-col>
+          <!--boton para actualizar cita-->
+          <ion-col size="3" class=" text-center">
+            <ion-button type="submit">
+              Actualizar Cita
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

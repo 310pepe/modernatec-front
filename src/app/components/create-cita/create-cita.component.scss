@@ -1,0 +1,36 @@
+.custom-shape-divider-bottom-1649306270 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1649306270 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 181px;
+}
+
+.custom-shape-divider-bottom-1649306270 .shape-fill {
+    fill: #4F69C6;
+}
+
+ion-card {
+    box-shadow: 2px 2px 2px 2px rgb(93, 78, 142);
+    margin-top: 5%;
+}
+
+#col {
+    @media (max-width: 575px) {
+        width: auto;
+        height: auto;
+    }
+    @media (max-width: 767px) {
+        width: auto;
+        height: auto;
+    }
+}

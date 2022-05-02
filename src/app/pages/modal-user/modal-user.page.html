@@ -1,0 +1,45 @@
+<!--Comienzo del contenido del modal de user -->
+<ion-content>
+    <!--inicio de la card-->
+    <ion-card>
+        <ion-card-header>
+            <!--Titulo principal-->
+            <ion-card-title class="text-center">
+                Perfil de <span>{{usuario.name}}</span>
+            </ion-card-title>
+        </ion-card-header>
+        <!--inicio del contenido principal del modal-->
+        <ion-card-content>
+            <div class="row">
+                <div class="col-3"></div>
+                <!--incercion de la imagen del usuario por defecto-->
+                <div class="col-6" id="imagen">
+                    <img *ngIf="!usuario.url_imagen" alt="imagen del usuario" src="../../../assets/icon/card.jpg" id="img1">
+
+
+                    <img *ngIf="usuario.url_imagen" alt="imagen del usuario" [src]="imagen(imagenes[0])" id="img1">
+
+
+                </div>
+                <!--información del usuario-->
+
+                <div class="col-6" id="info">
+                    NOMBRES: {{usuario.name}}
+                </div>
+                <div class="col-6" id="info">
+                    APELLIDOS: {{usuario.apellidos}}
+                </div>
+                <div class="col-6" id="info">TELEFONO: {{usuario.telefono}} </div>
+                <div class="col-6" id="info">CORREO: {{usuario.email}}</div>
+                <div class="col-6" id="info">DOCUMENTO: {{usuario.numero_identificacion}}</div>
+                <div class="col-6" id="info">ESTADO: {{usuario.estado}}</div>
+                <div class="col-12 text-center">
+                    <!--Boton para recgresar-->
+                    <ion-button fill="outline" (click)="cerrar()">
+                        regresar
+                    </ion-button>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

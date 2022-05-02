@@ -1,0 +1,71 @@
+<!--inicio del menu lateral-->
+<!--el ion-split-pane:Si el ancho de la pantalla del dispositivo está por debajo de cierto tamaño, 
+    el panel dividido se colapsará y el menú se ocultará.-->
+<ion-split-pane when="md" contentId="main-content">
+    <!--inicio del menu lateral-->
+    <ion-menu side="start" content-id="main-content">
+        <div class="menu-header-bg"></div>
+        <div class="header-content">
+            <!--imagen donde se vera la cara del usuario que utiliza la pltaforma, esta imagen esa por defecto
+            ,tambien el id para activar en ion popover-->
+            <img src="../assets/icon/perfil.jpg" alt="" ng-click="nested-button" id="nested-button">
+
+            <ion-label>
+                <!-- En el apartado de nombre debera de ir el nombre de la persona quien ingreso a la pltaforma segun su rol-->
+                <!--Do: hacerlo funcional-->
+                <h2>{{name}}</h2>
+                <!--slogan de modernatec-->
+                <P>Cuidando tu seguridad</P>
+                <!--Inicio del ion popover que en otras palabras en una lista plegable que el darle clik a la imagen se deplegara dos opciones
+                para el usuario  , esto conectado con el id desde imagen-->
+                <ion-popover trigger="nested-button" [dismissOnSelect]="true">
+                    <ng-template>
+                        <ion-content>
+                            <ion-list>
+                                <!--opcion numero 1 apartado de perfil del usuario-->
+                                <ion-item [button]="true" [detail]="false" routerLink="/user/perfil" [replaceUrl]="true">
+                                    <ion-label>Perfil</ion-label>
+                                </ion-item>
+                                <!--opcion numero dos cerrar sesion del usuario 
+                                    Do:hacerlo funcional-->
+                                <ion-item [button]="true" (click)="cerrarSesion()" [detail]="false">
+                                    <ion-label color="primary"><strong>Cerrar sesión</strong></ion-label>
+                                </ion-item>
+                            </ion-list>
+                        </ion-content>
+                    </ng-template>
+                </ion-popover>
+                <!--Finalizacion del ion popover-->
+            </ion-label>
+
+        </div>
+        <!--Incio del contenido del menu lateral-->
+        <ion-content>
+            <!--lista para los items del menu-->
+            <ion-list lines="none" class="menu-items">
+                <ion-item *ngFor="let item of opciones">
+                    <!--aca se mostrara los nombres y la url a donde se dirigen-->
+                    <a class="nav-link " [routerLink]="item.url" [replaceUrl]="true">
+                        <!--icono perteneciente a cada ruta-->
+                        <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                        {{item.name}} </a>
+                </ion-item>
+            </ion-list>
+            <!--footer del menu -->
+            <div class="footer-content">
+                <form><br>
+                    <!--contenido extra del menu-->
+                    <p>
+                        Para mas información de <br><strong>MODERNATEC</strong>
+                        <br> haga clic aca </p>
+                    <!--en este boton la idea es llevarlo al git hub donde se vera el
+                         read me de cada uno mostrando mas información del proyecto-->
+                    <ion-button color="success" href="https://github.com/310pepe/modernatec">INFO</ion-button>
+                    <img src="../assets/icon/menuPhoto.png">
+                </form>
+            </div>
+            <!--finalización del footer-->
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>

@@ -1,0 +1,108 @@
+<!--Incercion del menu/toolbar-->
+<app-menu></app-menu>
+<!--Incercion del contenido-->
+<ion-content>
+    <div class="row ">
+        <div class="">
+            <!--Navegador -->
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar por número de identificación" #nameP id="input">
+                <button class="btn btn-outline-info" (click)="buscar(nameP.value)" type="button">Search</button>
+            </form>
+
+        </div>
+        <!--Boton para crear registro-->
+        <div class="text-center">
+            <ion-button [routerLink]="['/user/create-user']" shape="round" fill="clear">
+                Crear Registro
+            </ion-button>
+            <!--Boton para crear la base de datos-->
+            <ion-button [routerLink]="['/user/data-base']" shape="round" fill="outline">
+                Cargar Base de datos
+            </ion-button>
+
+        </div>
+        <!--En caso de que los usuarios sean buscados en el navegador se mostrara lo siguiente-->
+        <div class="col-4" *ngIf="busqueda && usuariosB.length>0">
+            <ion-card>
+                <ion-card-content>
+                    <div class="row">
+                        <div class="col-12">
+                            <!--Imagen por defecto-->
+                            <ion-img alt="imagen del usuario" [src]="imagen(usuariosB[0])"></ion-img>
+                        </div>
+                        <!-- informacion del usuario/nombre-->
+                        <div class="col-12">
+                            <span>Nombre: {{usuariosB[0].name}}</span>
+                        </div>
+                        <!-- informacion del usuario/nombre-->
+                        <div class="col-12">
+                            <span>
+                Rol: {{usuariosB[0].rol}}
+              </span>
+                        </div>
+                        <!-- informacion del usuario/nombre-->
+                        <div class="col-12">
+                            <span>
+                Documento: {{usuariosB[0].numero_identificacion}}
+              </span>
+                        </div>
+                    </div>
+                    <!--Boton de "ver mas" donde se abrira el modal con informacion mas detallada del usuario -->
+                    <ion-button shape="round" expand="block" (click)="abrirModal(usuariosB[0])">
+                        Ver más
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <!--En caso de que no se encuentre el usuario al ingresar el numero de identificación mostrara el siguiente mensaje-->
+        <div class="col-12 col-lg-4 col-md-12 col-sm-12" *ngIf="busqueda && !(usuariosB.length>0)">
+            <p>
+                No se encontró ningun usuario con el número indicado
+            </p>
+        </div>
+        <!--Boton para ver nuevamente a todos los usuarios-->
+        <div class="col-3" *ngIf="busqueda">
+            <ion-button (click)="busqueda=false; usuariosB=[]" shape="round" fill="clear">
+                Ver todos los usuarios
+            </ion-button>
+        </div>
+        <!--Contenido principal del componente del registro de home-->
+        <ng-container *ngFor="let usuario of usuarios">
+            <div class=" col-12 col-lg-4 col-md-6 col-sm-12" *ngIf="!busqueda">
+                <!--Inicio de la card-->
+                <ion-card>
+                    <ion-card-content>
+                        <div class="row">
+                            <!--Imagen por defecto-->
+                            <div class="">
+                                <ion-img alt="imagen del usuario" [src]="imagen(usuario)" class="img"></ion-img>
+                            </div>
+                            <!--información del usuario-->
+                            <div class="col-12">
+                                <span>Nombre: {{usuario.name}}</span>
+                            </div>
+                            <!--información del usuario-->
+                            <div class="col-12">
+                                <span>
+                  Rol: {{usuario.rol}}
+                </span>
+                            </div>
+                            <!--información del usuario-->
+                            <div class="col-12">
+                                <span>
+                  Documento: {{usuario.numero_identificacion}}
+                </span>
+                            </div>
+
+                        </div>
+                        <!--Boton para ver mas acerca de la informacion del usuario-->
+                        <ion-button shape="round" expand="block" (click)="abrirModal(usuario)">
+                            Ver más
+                        </ion-button>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </ng-container>
+    </div>
+</ion-content>

@@ -1,0 +1,59 @@
+.custom-shape-divider-bottom-1649216431 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1649216431 svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 500px;
+}
+
+.custom-shape-divider-bottom-1649216431 .shape-fill {
+    fill: #4F69C6;
+}
+
+//
+ion-card {
+    box-shadow: 2px 2px 2px 2px rgb(93, 78, 142);
+    margin-top: 15%;
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    @media (max-width: 783px) {
+        margin-top: 30%;
+        width: 50%;
+        height: 50%;
+    }
+    ion-item {
+        margin-top: 5%;
+        margin-bottom: 10%;
+        @media (max-width: 783px) {
+            font-size: 10PX;
+            margin-top: 5%;
+            margin-bottom: 10%;
+        }
+    }
+    ion-button {
+        --border-radius: 15px;
+    }
+}
+
+.img {
+    border-radius: 100%;
+    width: 210px;
+    height: 200px;
+    margin-left: 20px;
+}
+
+form {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10%;
+}

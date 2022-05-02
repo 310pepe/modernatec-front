@@ -1,0 +1,8 @@
+{
+  "name": "modernatec",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

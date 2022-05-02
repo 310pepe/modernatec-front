@@ -1,0 +1,53 @@
+<!--Incersion del menu /toolbar-->
+<app-menu></app-menu>
+<!--Inicio del contenido-->
+<ion-content>
+  <div class="row mt-3 ms-1">
+    <form id="form">
+      <!--Titulo principal-->
+      <div class="col-12 text-center">
+        <h2>
+          SELECCIONE TIPO DE GRAFICA
+        </h2>
+      </div>
+      <!--Botones para seleccionar las diferntes grficas existentes-->
+      <!--DO: hacerlas funcional-->
+      <div class="col-12 text-center" id="button">
+        <ion-button color="primary" fill="outline" (click)="cambiarGrafico(1)" shape="round">lineas</ion-button>
+        <ion-button color="primary" fill="outline" (click)="cambiarGrafico(2)" shape="round">Barras</ion-button>
+        <ion-button color="primary" fill="outline" (click)="cambiarGrafico(3)" shape="round">Pastel</ion-button>
+        <!--Boton para generar reporte -->
+        <ion-button [routerLink]="['/user/admin-reportes']" [replaceUrl]="true" color="primary" shape="round">
+          Generar Reporte
+        </ion-button>
+
+      </div>
+
+    </form>
+
+    <!--Grafica por dia -->
+
+    <div class="col-12 col-lg-6">
+      <h3 class="text-center"> Gráfica por día </h3>
+      <canvas *ngIf="loadDia && linear" baseChart width="400" height="400" [data]="lineChartData"
+        [options]="lineChartOptions" [type]="lineChartType"></canvas>
+      <canvas *ngIf="loadDia && barras" baseChart [data]="barChartData" [type]="barChartType">
+      </canvas>
+      <canvas *ngIf="loadDia && pastel" baseChart [data]="pieChartData" [type]="pieChartType">
+      </canvas>
+
+    </div>
+    <!--Grafica por mes-->
+
+    <div class="col-12 col-lg-6">
+      <h3 class="text-center">Gráfica por mes</h3>
+      <canvas *ngIf="loadMes && linear" baseChart width="400" height="400" [data]="lineChartData1"
+        [options]="lineChartOptions" [type]="lineChartType"></canvas>
+      <canvas *ngIf="loadMes && barras" baseChart [data]="barChartData1" [type]="barChartType">
+      </canvas>
+      <canvas *ngIf="loadMes && pastel" baseChart [data]="pieChartData1" [type]="pieChartType">
+      </canvas>
+    </div>
+
+  </div>
+</ion-content>

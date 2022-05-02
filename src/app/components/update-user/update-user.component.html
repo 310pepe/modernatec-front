@@ -1,0 +1,229 @@
+<!--Incersion del menu/toollbar-->
+<app-menu></app-menu>
+<!--Inicio del contenido pricipal-->
+<ion-content>
+    <ion-card *ngIf="load">
+        <ion-card-header>
+            <!--Titulo prinicpal ingresando el nombre del usuario-->
+            <ion-card-title class="text-center">
+                Perfil de <span> {{usuario[0].name}} </span>
+            </ion-card-title>
+            <ion-card-content>
+                <!--Inicio del form group-->
+                <form [formGroup]="userForm" (submit)="actualizar()">
+                    <!--Informacion principal del usuario para actualizar-->
+                    <ion-row>
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class=" mb-3 has-validation">
+                                <ion-item>
+                                    <ion-label position="stacked">Nombres</ion-label>
+                                    <ion-input type="text" formControlName="name" [class.is-invalid]="nameNoValido" pattern="[a-zA-Z\u00C0-\u00FF ]+" [class.is-valid]="!nameNoValido && this.userForm.get('name').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="nameNoValido" id="small" class="text-danger">
+                Por favor ingrese los nombres del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3 ">
+                                <ion-item>
+                                    <ion-label position="stacked">Apellidos</ion-label>
+                                    <ion-input type="text" formControlName="apellidos" [class.is-invalid]="apellidosNoValido" pattern="[a-zA-Z\u00C0-\u00FF ]+" [class.is-valid]="!apellidosNoValido && this.userForm.get('apellidos').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="apellidosNoValido" id="small" class="text-danger">
+                Por favor ingrese los apellidos del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label position="stacked">Número de identificación</ion-label>
+                                    <ion-input type="text" formControlName="numero_identificacion" [class.is-invalid]="numero_identificacionNoValido" [class.is-valid]="!numero_identificacionNoValido && this.userForm.get('numero_identificacion').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="numero_identificacionNoValido" id="small" class="text-danger">
+                Por favor ingrese el número de identificación del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3 ">
+                                <ion-item>
+                                    <ion-label position="stacked">Telefono</ion-label>
+                                    <ion-input type="text" formControlName="telefono" [class.is-invalid]="telefonoNoValido" [class.is-valid]="!telefonoNoValido && this.userForm.get('telefono').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="telefonoNoValido" id="small" class="text-danger">
+                Por favor ingrese el telefono del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label position="stacked">Correo electrónico</ion-label>
+                                    <ion-input type="text" formControlName="email" [class.is-invalid]="emailNoValido" [class.is-valid]="!emailNoValido && this.userForm.get('email').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="emailNoValido" id="small" class="text-danger">
+                Por favor ingrese el email del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label>Tipo de Rol:</ion-label>
+                                    <ion-select formControlName="rol" [class.is-invalid]="rolNoValido" [class.is-valid]="!rolNoValido && this.userForm.get('rol').touched" aria-label="Default select example">
+                                        <ion-select-option value="1">Registros</ion-select-option>
+                                        <ion-select-option value="2">Administrador</ion-select-option>
+                                        <ion-select-option value="3">Seguridad</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="rolNoValido" id="small" class="text-danger">
+                Por favor ingrese el rol del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label>Tipo de contrato:</ion-label>
+                                    <ion-select formControlName="id_contratoA" aria-label="Default select example">
+                                        <ion-select-option value="1">Definido</ion-select-option>
+                                        <ion-select-option value="2">Indefinido</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+
+                            </div>
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label position="stacked">Fecha de inico</ion-label>
+                                    <ion-input type="date" formControlName="fecha_inicioA" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <div class="col-6 col-lg-6 col-md-12 col-sm-12" id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label position="stacked">Fecha de fin</ion-label>
+                                    <ion-input type="date" formControlName="fecha_finA" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+
+                            </div>
+                        </div>
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 *ngIf="createContract" id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label>Tipo de contrato:</ion-label>
+                                    <ion-select formControlName="id_contrato" [class.is-invalid]="id_contratoNoValido" [class.is-valid]="!id_contratoNoValido && this.userForm.get('id_contrato').touched" aria-label="Default select example">
+                                        <ion-select-option value="1">Definido</ion-select-option>
+                                        <ion-select-option value="2">Indefinido</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="id_contratoNoValido" id="small" class="text-danger">
+                Por favor ingrese el tipo de contrato del usuario
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 *ngIf="createContract" id="col">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label position="stacked">Fecha de inico</ion-label>
+                                    <ion-input type="date" formControlName="fecha_inicio" [class.is-invalid]="fecha_inicioNoValido" [class.is-valid]="!fecha_inicioNoValido && this.userForm.get('fecha_inicio').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="fecha_inicioNoValido" id="small" class="text-danger">
+                Por favor ingrese la fecha de inicio del contrato
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion solicitada para el usuario-->
+                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col" *ngIf="userForm.value.id_contrato==1">
+                            <div class="mb-3">
+                                <ion-item>
+                                    <ion-label position="stacked">Fecha de fin</ion-label>
+                                    <ion-input type="date" formControlName="fecha_fin" [class.is-invalid]="fecha_finNoValido" [class.is-valid]="!fecha_finNoValido && this.userForm.get('fecha_fin').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
+                                </ion-item>
+                            </div>
+                            <!--comiendo del ngIf en caso de que el campo no sea valido saldra el siguiente mensaje-->
+                            <small *ngIf="fecha_finNoValido" id="small" class="text-danger">
+                Por favor ingrese la fecha de finalización del contrato
+              </small>
+                            <!--fin del ngIf-->
+                        </ion-col>
+                        <!--Informacion principal del usuario para actualizar-->
+                        <div class="col-12">
+                            <ion-row *ngIf="usuario[0].url_imagen">
+                                <!--Imagenes por defecto-->
+                                <div class="col-3 " *ngFor="let image of imagenes">
+                                    <ion-img alt="imagen del usuario" [src]="imagen(image)"></ion-img>
+                                </div>
+                                <div class="col-3 text-center">
+                                    
+                                    <ion-icon [routerLink]="'/user/adicionar-reconocimiento/'+usuario[0].numero_identificacion" [replaceUrl]="true"  name="add-circle-outline"></ion-icon>
+                                    
+                                </div>
+                            </ion-row>
+                            <ion-row class="text-center">
+                                <ion-col size="12" sizeLg="6" sizeSm sizeMd="6">
+                                    <ion-button *ngIf="!createContract" (click)="crearContrato(true)" fill="clear" class="text-center">
+                                        Crear nuevo contrato
+                                    </ion-button>
+                                    <ion-button *ngIf="createContract" (click)="crearContrato(false)" fill="clear" class="text-center">
+                                        Cancelar creación de contrato
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size="12" sizeLg="6" sizeSm sizeMd="6" *ngIf="!usuario[0].url_imagen">
+                                    <ion-button [routerLink]="['/user/agregar-reconocimiento/'+usuario[0].numero_identificacion]" [replaceUrl]="true" fill="clear" class="text-center">
+                                        Agregar <br> reconocimiento facial
+                                    </ion-button>
+                                </ion-col>
+
+                            </ion-row>
+                        </div>
+                        <!--Boton de cancelar la accion-->
+                        <ion-col size="12" sizeLg="6" sizeSm sizeMd="6" shape="round" class="text-center">
+                            <ion-button shape="round" [routerLink]="['/user/admin-regis']" [replaceUrl]="true">
+                                Cancelar
+                            </ion-button>
+                        </ion-col>
+                        <!--Boton para guardar los cambios-->
+                        <ion-col size="12" sizeLg="6" sizeSm sizeMd="6" class="text-center">
+                            <ion-button type="submit" shape="round" fill="outline">
+                                Guardar
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+
+            </ion-card-content>
+        </ion-card-header>
+    </ion-card>
+</ion-content>

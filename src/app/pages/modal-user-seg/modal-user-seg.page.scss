@@ -1,0 +1,27 @@
+h2 {
+    color: #000;
+}
+
+#card {
+    box-shadow: none;
+}
+
+#imagen {
+    margin-top: 8%;
+    .img {
+        border-radius: 15px;
+    }
+    h3 {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+}
+
+#button {
+    --border-radius: 15px;
+    margin-top: 15px;
+}
+
+#info {
+    margin-top: 5%;
+}

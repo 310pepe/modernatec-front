@@ -1,0 +1,23 @@
+ion-card-title {
+    font-size: 30px;
+}
+
+ion-card {
+    margin-top: 40px;
+    box-shadow: none;
+    #imagen {
+        margin-bottom: 10px;
+        img {
+            border-radius: 100%;
+            width: 210px;
+            height: 200px;
+            margin-left: 20px;
+        }
+    }
+    #info {
+        font-size: 15px;
+    }
+    ion-button {
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,75 @@
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <!--Tamaños correspondientes a la pantalla-->
+            <ion-col size="12" sizeLg="5" sizeMd="6" sizeSm="12">
+                <!--icono de la flecha para devolverse a la pagina anterior-->
+                <ion-icon name="arrow-back" routerLink="/login" [replaceUrl]="true"></ion-icon>
+                <!--Titulo principal-->
+                <h1><strong>INGRESE LOS SIGUIENTES <br> DATOS</strong></h1>
+                <!--Inicio del form group-->
+                <form [formGroup]="register_form" (ngSubmit)="submitPost()" id="form">
+                    <!--apartado para agregar información de nombre-->
+                    <ion-item>
+                        <ion-label position="floating">Nombre</ion-label>
+                        <ion-input pattern="[a-zA-Z\u00C0-\u00FF ]+" autocomplete="on" formControlName="name"></ion-input>
+                    </ion-item><br>
+                    <!--En caso de que el campo no se complete se postrara el ngIf-->
+                    <small *ngIf="nombreNoValido" class="text-danger" id="small">
+            Ingrese sus nombres
+          </small>
+                    <!--apartado para agregar información de apellidos-->
+                    <ion-item>
+                        <ion-label position="floating">Apellidos</ion-label>
+                        <ion-input pattern="[a-zA-Z\u00C0-\u00FF ]+" autocomplete="on" formControlName="apellidos"></ion-input>
+                    </ion-item><br>
+                    <!--En caso de que el campo no se complete se postrara el ngIf-->
+                    <small *ngIf="apellidoNoValido" class="text-danger " id="small">
+            Ingrese sus apellidos
+          </small>
+                    <!--apartado para agregar información de Numero de identificación-->
+                    <ion-item>
+                        <ion-label position="floating">Numero de Identificación</ion-label>
+                        <ion-input autocomplete="on" formControlName="numero_identificacion" maxlength="15">
+                        </ion-input>
+                    </ion-item><br>
+                    <!--En caso de que el campo no se complete se postrara el ngIf-->
+                    <small *ngIf="numeroIdNoValido" class="text-danger" id="small">
+            Ingrese su número de identificación
+          </small>
+                    <!--apartado para agregar información de Telefono-->
+                    <ion-item>
+                        <ion-label position="floating">
+                            <table>Telefono</table>
+                        </ion-label>
+                        <ion-input autocomplete="on" formControlName="telefono" maxlength="10"></ion-input>
+                    </ion-item><br>
+                    <!--En caso de que el campo no se complete se postrara el ngIf-->
+                    <small *ngIf="telefonoNoValido" class="text-danger" id="small">
+            Ingrese su número de telefono
+          </small>
+                    <!--apartado para agregar información de Correo-->
+                    <ion-item>
+                        <ion-label position="floating">Correo</ion-label>
+                        <ion-input autocomplete="on" formControlName="email" type="email"></ion-input>
+                    </ion-item> <br>
+                    <!--En caso de que el campo no se complete se postrara el ngIf-->
+                    <small *ngIf="emailNoValido" class="text-danger" id="small">
+            Ingrese un correo válido
+          </small>
+
+                    <!--Boton para enviar información registrada-->
+                    <ion-button expand="block" shape="round" type="submit" color="primary">Registrarse</ion-button>
+
+                </form>
+                <!--Finalización del Form group-->
+            </ion-col>
+            <!--Columnas para pantalla derecha -->
+            <ion-col size="12" sizeLg="7" sizeMd="6" sizeSm="12">
+                <!--imagen grafica-->
+                <img src="../../assets/icon/registerPhoto.png" id="img">
+            </ion-col>
+            <!--fin de las columnas-->
+        </ion-row>
+    </ion-grid>
+</ion-content>

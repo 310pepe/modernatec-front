@@ -1,0 +1,41 @@
+<ion-content>
+    <ion-row>
+        <!--Inicio de los tamaños correspondientes del tamaño de pantallas -->
+        <ion-col size="12" sizeLg="5" sizeMd="6" sizeSm="12" id="col2">
+            <!--inicio del form-->
+            <form id="form">
+                <!--Incio incerción de las imagenes correspondientes al logo y imagen grafica-->
+                <img src="../../assets/icon/logo.png" id="logo"><br>
+                <img src="../../assets/icon/codigoPhoto.png" id="img" width="250" height="250">
+                <!--Fin incercio de las imagenes correspondientes al logo y imagen grafica-->
+            </form>
+            <!--Fin del form-->
+        </ion-col>
+        <!--fin del los tamaños correspondientes-->
+        <!--Inicio de los tamaños correspondientes del tamaño de pantallas para el formulario -->
+        <ion-col size="12" sizeLg="7" sizeMd="6" sizeSm="12" id="col">
+            <!--Incerción de titulo del formulario -->
+            <h2> <strong>Confirmación del<br> codigo</strong></h2>
+            <!--inicio de la card para el formulario-->
+            <ion-card>
+                <ion-card-content>
+                    <!--inicio del form-->
+                    <form [formGroup]="formulario" (ngSubmit)="verificarCode()">
+                        <!--Inicio del la incercion del codigo con algunos estilos de ionic-->
+                        <ion-item>
+                            <ion-label position="floating">Codigo</ion-label>
+                            <ion-input formControlName="codigo" type="text"></ion-input>
+                        </ion-item><br>
+                        <!--Fin del la incercion del codigo con algunos estilos de ionic-->
+                        <!--Bonton de enviar la información-->
+
+                        <ion-button type="submit" expand="block" color="primary" shape="round">Enviar</ion-button>
+                        <!--fin del boton-->
+                    </form>
+                    <!--fin del form-->
+                </ion-card-content>
+            </ion-card>
+            <!--fin de la card-->
+        </ion-col>
+    </ion-row>
+</ion-content>

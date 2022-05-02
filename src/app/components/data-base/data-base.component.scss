@@ -1,0 +1,29 @@
+.custom-shape-divider-bottom-1649306870 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1649306870 svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 281px;
+}
+
+.custom-shape-divider-bottom-1649306870 .shape-fill {
+    fill: #4F69C6;
+}
+
+ion-card {
+    box-shadow: 2px 2px 2px 2px rgb(93, 78, 142);
+    margin-top: 7%;
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-top: 10%;
+}

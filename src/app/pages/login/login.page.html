@@ -1,0 +1,50 @@
+<ion-content class="n">
+    <ion-grid>
+        <ion-row>
+            <!--insercion de la imagen con sus tamaños de col segun el pantalla-->
+            <ion-col size="12" sizeLg="7" sizeMd="6">
+                <img src="../../assets/icon/inicioLogin.png" id="img">
+            </ion-col>
+            <!--Fin insercion de la imagen con sus tamaños de col segun el pantalla-->
+            <ion-col size="12" sizeLg="5" sizeMd="6" sizeSm="12">
+                <!--Inicio del form group-->
+                <form [formGroup]="login_form" (ngSubmit)="submitPost()" id="form">
+                    <!--logo de modernatec con su id para el css -->
+                    <img src="../../assets/icon/logo.png" id="logo">
+                    <!--Titulo de bienvenidos-->
+                    <h1><strong>BIENVENIDO</strong></h1>
+                    <!--inicio del ingreso del gmail con estilos de ionic-->
+                    <ion-item>
+                        <ion-label position="floating">Email</ion-label><br>
+                        <ion-input type="email" formControlName="email" [class.is-invalid]="emailNoValido">
+                        </ion-input>
+                    </ion-item>
+                    <!--fin del ingreso del gmail-->
+                    <!--comiendo del ngIf en caso de que el gmail no sea valido saldra el siguiente mensaje-->
+                    <small *ngIf="emailNoValido" id="small">
+                        Ingrese el correo
+                     </small>
+                    <!--fin del ngIf-->
+                    <!--inicio del ingreso del password con estilos de ionic-->
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label><br>
+                        <ion-input type="password" formControlName="password" required="true" [class.is-invalid]="passNoValido">
+                        </ion-input>
+                    </ion-item>
+                    <!--fin del ingreso del password-->
+                    <!--comiendo del ngIf en caso de que el gmail no sea valido saldra el siguiente mensaje-->
+                    <small *ngIf="passNoValido" id="small">
+                Ingrese su contraseña
+              </small>
+                    <!--fin del ngIf-->
+                    <!--Comienzo del boton del LOGIN y enlaces para ir a otras paginas -->
+
+                    <ion-button expand="block" shape="round" type="submit" color="primary">Login</ion-button>
+                    <h2 [routerLink]="['/email-password']" [replaceUrl]="true">¿Se te olvido la <strong>Contraseña</strong>?</h2>
+                    <h3 [routerLink]="['/register']" [replaceUrl]="true">Da clic en <strong>Registrate</strong> si aun no <br> estas registrado</h3>
+                    <!--fin del boton del login y enlaces correspondientes de la pagina del login-->
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

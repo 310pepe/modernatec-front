@@ -1,0 +1,54 @@
+//estilos correspondientes a la pagina del login 
+
+/* en el ion content tenemos img con 
+sus respectivos tamaños y separacion de la parte superior dela pagina*/
+
+
+ion-content {
+    #img {
+        width: 800px;
+        height: 500px;
+        margin-top: 140px;
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+    /*estilos del form correspondientes a la separacion 
+    del lado derecho ,izquierdo y arriba de la pagina*/
+    form {
+        margin-right: 35px;
+        margin-left: 35px;
+        margin-top: 20px;
+        /* tamaño del logo principal de mordernatec
+        con sis separaciones del lado derecho e izquierdo*/
+        #logo {
+            margin-top: 15px;
+            margin-left: 35%;
+            width: 166px;
+            height: 166px;
+            @media (max-width: 768px) {
+                margin-top: 15px;
+                margin-left: 20%;
+                width: 166px;
+                height: 166px;
+            }
+        }
+        /* alineacion central para el h1=Bienvenidos,
+        h2=¿se te olvido la contraseña?,
+        h3=Da clic en Registrate si aun no estas registrado*/
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+        }
+        /* color y tamaño a los ngiF*/
+        #small {
+            color: red;
+            font-size: 20px;
+        }
+    }
+}

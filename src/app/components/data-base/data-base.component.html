@@ -1,0 +1,68 @@
+<!--Incercion del menu /toolbar-->
+<app-menu></app-menu>
+<!--Inicio del contenido con estilos de css-->
+<ion-content style="position: relative;">
+    <div class="custom-shape-divider-bottom-1649306870">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
+    </svg>
+    </div>
+    <!--Inicio de la card -->
+    <ion-card>
+        <ion-card-header>
+            <!--Titulo prinipal-->
+            <ion-card-title class="text-center">
+                Cargar base de datos
+            </ion-card-title>
+            <!--Sub titulo principal-->
+            <ion-card-subtitle>
+                Por favor cargue el archivo csv con los parametros establecidos
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <!--Inicio del form-->
+            <form>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <!--Ingreso de base de datos-->
+                            <label for="formFile" class="form-label">Base de datos</label>
+                            <input class="form-control" (change)="cambiarArchivo($event.target)" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <!--Division por contenido de boostrap-->
+                    <div class="col-3"></div>
+                    <!--Boton para enviar la base de datos-->
+                    <div class="col-6">
+                        <ion-button expand="block" (click)="subirdb()" [disabled]="!archivo" shape="round" type="submit" color="primary">Enviar</ion-button>
+                    </div>
+                    <!--Division por estilos de booostrap-->
+                    <div class="col-3"></div>
+                </div>
+            </form>
+        </ion-card-content>
+    </ion-card>
+    <!--En caso de que la base de datos se encuentre algun inconveniente mostrara lo siguiene-->
+    <table class="table" *ngIf="load">
+        <thead>
+            <!--Errores en la informacion del usuario-->
+            <h3 class="text-center"> Usuarios no creados por tener errores </h3>
+            <tr>
+                <th scope="col">Identificación</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let error of errores">
+                <td> {{error.numero_identificacion}} </td>
+                <td> {{error.name}} </td>
+                <td> {{ error.apellidos }} </td>
+                <td> {{error.email}} </td>
+                <td> {{error.telefono}} </td>
+            </tr>
+        </tbody>
+    </table>
+</ion-content>

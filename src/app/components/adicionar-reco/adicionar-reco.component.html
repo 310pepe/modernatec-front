@@ -1,0 +1,46 @@
+<!--Incersion del menu / toolbar-->
+<app-menu></app-menu>
+<!--Contenido principal del componente-->
+<ion-content>
+  <div class="row">
+    <div class="col-12 text-center" id="title">
+      <!--Mensaje bonito e instructivo para el usuario-->
+      <h2>
+        ¡HOLA! INGRESA LAS FOTOS :D
+      </h2>
+    </div>
+    <ion-col size="12">
+      <!--Incio del form-->
+      <form [formGroup]="form" (submit)="addLearning()">
+        <ion-row formArrayName="img">
+          <!--Ingreso de la primera imagen para el reconocimiento facial-->
+          <ion-col *ngFor="let imagen of imagenes.controls; let i = index" size="12" size-lg="4" size-md="12" size-sm
+            mb-3>
+            <input [formControlName]="i" type="file" accept="image/*" (change)="agregarImagen($event.target,i)">
+            <img [src]="preview[i]">
+            <br>
+            <ion-button (click)="borrarImg(i)">
+              Borrar
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <!--Boton para agregar las fotos para el reconociemiento facial-->
+          <div class="col-12 text-center">
+            <ion-button  [routerLink]="['/user/admin-regis']" [replaceUrl]="true">
+              Cancelar
+            </ion-button>
+            <ion-button (click)="agregarImg()">
+              Agregar foto
+            </ion-button>
+            <ion-button  type="submit" color="primary" shape="round">
+              Agregar reconocimiento
+            </ion-button>
+
+          </div>
+        </ion-row>
+      </form>
+    </ion-col>
+  </div>
+</ion-content>
